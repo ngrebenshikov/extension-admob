@@ -5,13 +5,13 @@
 //  Copyright 2016 Google LLC. All rights reserved.
 //
 
+#import <Foundation/Foundation.h>
 #import <GoogleMobileAds/GADAudioVideoManagerDelegate.h>
-#import <GoogleMobileAds/GoogleMobileAdsDefines.h>
 
 /// Provides audio and video notifications and configurations management.
 ///
 /// Don't create an instance of this class and use the one available from GADMobileAds
-/// sharedInstace's audioVideoManager.
+/// sharedInstance's audioVideoManager.
 @interface GADAudioVideoManager : NSObject
 
 /// Delegate for receiving video and audio updates.

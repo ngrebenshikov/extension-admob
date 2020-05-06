@@ -5,9 +5,6 @@
 //  Copyright 2018 Google LLC. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
-
-#import <GoogleMobileAds/GoogleMobileAdsDefines.h>
 #import <GoogleMobileAds/Mediation/GADMediationAdEventDelegate.h>
 #import <GoogleMobileAds/Mediation/GADMediationBannerAd.h>
 #import <GoogleMobileAds/Mediation/GADMediationInterstitialAd.h>
@@ -15,6 +12,7 @@
 #import <GoogleMobileAds/Mediation/GADMediationRewardedAd.h>
 #import <GoogleMobileAds/Mediation/GADMediationServerConfiguration.h>
 #import <GoogleMobileAds/Mediation/GADVersionNumber.h>
+#import <UIKit/UIKit.h>
 
 /// Called by the adapter after loading the banner ad or encountering an error. Returns an ad
 /// event object to send ad events to the Google Mobile Ads SDK. The block returns nil if a delegate
@@ -63,6 +61,9 @@ typedef void (^GADMediationAdapterSetUpCompletionBlock)(NSError *_Nullable error
 /// Returns Nil if the network doesn't have publisher provided extras.
 + (nullable Class<GADAdNetworkExtras>)networkExtrasClass;
 
+/// Returns an initalized mediation adapter.
+- (nonnull instancetype)init;
+
 @optional
 
 /// Tells the adapter to set up its underlying ad network SDK and perform any necessary prefetching
@@ -101,12 +102,5 @@ typedef void (^GADMediationAdapterSetUpCompletionBlock)(NSError *_Nullable error
             (nonnull GADMediationRewardedAdConfiguration *)adConfiguration
                        completionHandler:
                            (nonnull GADMediationRewardedLoadCompletionHandler)completionHandler;
-
-/// Deprecated. To be removed before launch. Use setUpWithConfiguration:completionHandler:.
-+ (void)setUp;
-
-/// Deprecated. To be removed before launch. Use setUpWithConfiguration:completionHandler:.
-+ (void)updateConfiguration:(nonnull GADMediationServerConfiguration *)configuration
-    GAD_DEPRECATED_MSG_ATTRIBUTE("Use setUpWithConfiguration:completionHandler:.");
 
 @end
